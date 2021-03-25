@@ -2,8 +2,10 @@ package com.design.patterns.decorator;
 
 import com.design.patterns.decorator.business.Beverage;
 import com.design.patterns.decorator.business.impl.HouseBlend;
+import com.design.patterns.decorator.decorators.impl.Milk;
 import com.design.patterns.decorator.decorators.impl.Mocha;
 import com.design.patterns.decorator.decorators.impl.Soy;
+import com.design.patterns.decorator.decorators.impl.Whip;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,9 +23,10 @@ public class DecoratorApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Beverage beverage1 = new HouseBlend();
 
-		beverage1 = new Soy(beverage1);
 		beverage1 = new Mocha(beverage1);
 		beverage1 = new Mocha(beverage1);
+		beverage1 = new Milk(beverage1);
+		beverage1 = new Whip(beverage1);
 
 		log.info("Your beverage is "+beverage1.getDescription()+" cost "+beverage1.cost());
 	}
